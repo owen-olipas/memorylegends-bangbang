@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WARRIOR</title>
+  <link href="../CSS/2x2.css" rel="stylesheet">
+  <script src="../JS/script.js" async></script>
+</head>
+
+<body>
+  <!-- title of the page -->
+  <h1>Memory Game</h1>
+
+  <!-- overlays before and after the game -->
+  <div class="overlay visible">
+    <h4>CLICK TO START</h4>
+  </div>
+  <div id="victory" class="overlay">
+    <h4>VICTORY</h4>
+    <div class="overlay-small">
+    <span id="p1"></span>
+    <span>Click to Restart</span></div>
+  </div>
+
+  <!-- main container for the info and cards-->
+  <div class="container">
+    
+    <!-- another container for the game informations -->
+    <div class="info-container">
+      <div class="info butn">
+        <div id="btn">
+          <a href="../index.html">Return to Main Menu</a>
+        </div>
+      </div>
+      <div class="info">Flips: 
+        <span id="flips">0</span>
+      </div>
+      <div class="info">Timer:
+        <span id="time">0</span>
+      </div>
+    </div>
+
+    <!-- first row of the cards -->
+    <div class="card">
+      <div class="card-back card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="logo" src="../MEDIA/IMAGES/logo.png">
+      </div>
+      <div class="card-front card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="card-value" src="../MEDIA/IMAGES/alpha.png">
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-back card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="logo" src="../MEDIA/IMAGES/logo.png">
+      </div>
+      <div class="card-front card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="card-value" src="../MEDIA/IMAGES/alpha.png">
+      </div>
+    </div>
+
+    <!-- second row -->
+    <div class="card">
+      <div class="card-back card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="logo" src="../MEDIA/IMAGES/logo.png">
+      </div>
+      <div class="card-front card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="card-value" src="../MEDIA/IMAGES/alucard.png">
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-back card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="logo" src="../MEDIA/IMAGES/logo.png">
+      </div>
+      <div class="card-front card-face">
+        <img class="border" src="../MEDIA/IMAGES/border.png">
+        <img class="card-value" src="../MEDIA/IMAGES/alucard.png">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
