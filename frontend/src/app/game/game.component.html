@@ -1,0 +1,55 @@
+<div class="body-game">
+
+  <h1>Memory Game</h1>
+
+  <!-- overlays before and after the game -->
+  <div class="overlay">
+    <h4>CLICK TO START</h4>
+  </div>
+  <div id="victory" class="overlay">
+    <h4>VICTORY</h4>
+    <div class="overlay-small">
+      <span id="p1"></span>
+      <span>Click to Restart</span>
+    </div>
+  </div>
+
+  <!-- main container for the info and cards-->
+  <div class="container">
+
+    <!-- another container for the game information -->
+    <div class="info-container">
+      <div class="info butn">
+        <div id="btn">
+          <a routerLink="/">Return to Main Menu</a>
+        </div>
+      </div>
+      <div class="info">Flips:
+        <span id="flips">0</span>
+      </div>
+      <div class="info">Timer:
+        <span id="time">0</span>
+      </div>
+    </div>
+
+    <!-- Grid layout for the cards -->
+    <div class="card-container">
+      <div *ngFor="let row of rowsArray(); let rowIndex = index" class="card-row">
+        <div *ngFor="let col of columnsArray(); let colIndex = index" class="card-col">
+          <div class="card">
+            <div class="card-back card-face">
+              <img class="border" src="../../assets/images/border.png">
+              <img class="logo" src="../../assets/images/logo.png">
+            </div>
+            <div class="card-front card-face">
+              <img class="border" src="../../assets/images/border.png">
+              <img class="card-value" [src]="cards[rowIndex * columns + colIndex]">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

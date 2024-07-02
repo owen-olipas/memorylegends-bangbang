@@ -1,0 +1,29 @@
+<div class="body-home">
+  <div (click)="onScreenClick()">
+    <div class="overlay visible">
+      <h5 id="overlay">Greetings, Summoner!</h5>
+      <div class="overlay-small">
+        <span>(Click anywhere on the screen.)</span>
+      </div>
+    </div>
+  </div>
+
+  <h1>Memory Legends:<br>Bang Bang!</h1>
+  <h4>Select Rank:</h4>
+
+  <div (click)="onScreenClick()">
+    <div class="rank">
+      <div class="rank-option" *ngFor="let config of gameConfigs">
+        <a class="rank-button" routerLink="/game" [queryParams]="{ rows: config.rows, columns: config.columns }">
+          <span class='rank-border classic'>
+            <span class='rank-text classic'>
+              {{ config.name }}
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
