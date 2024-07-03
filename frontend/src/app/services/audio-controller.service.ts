@@ -6,20 +6,37 @@ import { Injectable } from '@angular/core';
 export class AudioControllerService {
   private bgMusic: HTMLAudioElement;
   private click: HTMLAudioElement;
+  private matchSound: HTMLAudioElement;
+  private victorySound: HTMLAudioElement;
 
   constructor() {
     this.bgMusic = new Audio('../../assets/audio/mlbb-bg_index.mp3');
     this.click = new Audio('../../assets/audio/click.mp3');
+    this.matchSound = new Audio('../../assets/audio/match.mp3');
+    this.victorySound = new Audio('../../assets/audio/victory.mp3');
 
     this.bgMusic.volume = 0.3;
     this.bgMusic.loop = true;
+
+    this.matchSound.volume = 0.4;
   }
 
   startMusic() {
     this.bgMusic.play();
   }
 
+  stopMusic() {
+    this.bgMusic.pause();
+    this.bgMusic.currentTime = 0;
+  }
   flip() {
-    this.click.play();
+      this.click.play();
+  }
+  match() {
+      this.matchSound.play();
+  }
+  victory() {
+      this.stopMusic();
+      this.victorySound.play();
   }
 }

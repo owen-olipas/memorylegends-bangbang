@@ -1,4 +1,9 @@
-
+/* Applying the styles to all elements */
+* {
+  box-sizing: border-box;
+  cursor: url(../../assets/cursors/normal.cur), auto;
+  font-family: 'Friz Quadrata';
+}
 
 /* --------------------------- HEADING styles ---------------------- */
 
@@ -7,7 +12,6 @@ h1 {
   margin-top: 25px;
   text-align: center;
   font-size: 6em;
-  font-weight: bold;
 }
 
 /* --------------------------- INFO CONTAINER styles ---------------------- */
@@ -29,89 +33,6 @@ h1 {
   -webkit-text-stroke-width:0.5px;
   -webkit-text-stroke-color: #f6f2c0;
   font-size: 2.2em;
-}
-
-/* --------------------------- RETURN BUTTON styles ---------------------- */
-
-/* General styles for the button */
-#btn {
-  position: relative;
-  padding: 0 10px 0 30px;
-  line-height: 45px;
-  color: #442c00;
-  text-decoration: none;
-  font-size: 14px;
-  cursor: url("../../assets/cursors/alt.cur"), auto;
-}
-
-/* Styles for the text inside the button */
-a {
-  font-size: 14px;
-  color: #462523;
-  text-decoration: none;
-  display: inline-block;
-  letter-spacing: 2px;
-  cursor: url("../../assets/cursors/alt.cur"), auto;
-}
-
-/* Button styles before */
-#btn:before {
-  content: '';
-  position: absolute;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
-  left: 20px;
-  right: 0;
-  height: 34px;
-  margin-top: 5px;
-  z-index: -1;
-  border-radius: 5px;
-  background-image: -webkit-linear-gradient(top, #f6f2c0, #cb9b51);
-  background-image: -moz-linear-gradient(top, #f6f2c0, #cb9b51);
-  background-image: -ms-linear-gradient(top, #f6f2c0, #cb9b51);
-  background-image: -o-linear-gradient(top, #f6f2c0, #cb9b51);
-  background-image: linear-gradient(top, #f6f2c0, #cb9b51);
-}
-
-/* Button styles after */
-#btn:after {
-  content: '';
-  position: absolute;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
-  left: 11px;
-  height: 27px;
-  width: 26px;
-  top: 8px;
-  z-index: -2;
-  border-radius: 7px 5px 5px 7px;
-  background: #f6f2c0;
-  background-image: -webkit-linear-gradient(135deg, #f6f2c0, #cb9b51);
-  background-image: -moz-linear-gradient(135deg, #f6f2c0, #cb9b51);
-  background-image: -ms-linear-gradient(135deg, #f6f2c0, #cb9b51);
-  background-image: -o-linear-gradient(135deg, #f6f2c0, #cb9b51);
-  background-image: linear-gradient(135deg, #f6f2c0, #cb9b51);
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-       -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-/* Styles when hover */
-#btn:hover:before {
-  background-image: -webkit-linear-gradient(top, #f6f2c0 -25%, #cb9b51 75%);
-  background-image: -moz-linear-gradient(top, #f6f2c0 -25%, #cb9b51 75%);
-  background-image: -ms-linear-gradient(top, #f6f2c0 -25%, #cb9b51 75%);
-  background-image: -o-linear-gradient(top, #f6f2c0 -25%, #cb9b51 75%);
-  background-image: linear-gradient(top, #f6f2c0 -25%, #cb9b51 75%);
-}
-#btn:hover:after {
-  background-image: -webkit-linear-gradient(135deg,#f6f2c0 -25%, #cb9b51 75%);
-  background-image: -moz-linear-gradient(135deg,#f6f2c0 -25%, #cb9b51 75%);
-  background-image: -ms-linear-gradient(135deg,#f6f2c0 -25%, #cb9b51 75%);
-  background-image: -o-linear-gradient(135deg,#f6f2c0 -25%, #cb9b51 75%);
-  background-image: linear-gradient(135deg,#f6f2c0 -25%, #cb9b51 75%);
 }
 
 /* --------------------------- MAIN CONTAINER styles ---------------------- */
@@ -193,78 +114,10 @@ a {
   transform: rotateY(180deg);
 }
 
-
-/* --------------------------- OVERLAY styles ---------------------- */
-
-/* General styles for the overlays */
-.overlay {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  display: none;
-  text-align: center;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: background-color 500ms, font-size 500ms;
-}
-
-/* Styles for the texts */
-h4{
-  margin-top: 15%;
-  position: fixed;
-  background-image: linear-gradient(
-    to right,
-  #462523 0,
-  #cb9b51 22%,
-  #f6e27a 45%,
-  #f6f2c0 50%,
-  #f6e27a 55%,
-  #cb9b51 78%,
-  #462523 100%
- );
-  color:transparent;
-  background-clip:text;
-  -webkit-background-clip:text;
-  -webkit-text-stroke-width:.1px;
-  -webkit-text-stroke-color: #382f21;
-}
-
-/* Styles for the small texts */
-.overlay-small {
-  font-size: .2em;
-  margin-top: 14%;
-  color: #cb9b51;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Animation for the overlay */
-.overlay.visible {
-  display: flex;
-  animation: overlay-grow 500ms forwards;
-}
-
-@keyframes overlay-grow {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 0;
-  }
-  to {
-    background-color: rgba(0, 0, 0, .9);
-    font-size: 10em;
-  }
-}
-
 /* ------------------ Make HTML responsive ------------------ */
 
-@media (max-width: 550px) {
+/* @media (max-width: 550px) {
   .overlay-small{
     margin-top: 20%;
   }
-}
+} */

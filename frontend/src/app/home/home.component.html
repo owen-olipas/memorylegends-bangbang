@@ -1,5 +1,5 @@
-<div class="body-home">
-  <div (click)="onScreenClick()">
+<!-- <div class="body-hom flex flex-column w-full h-full top-0 left-0 fixed bg-center bg-no-repeat bg-cover z-0">
+ <div (click)="onScreenClick()">
     <div class="overlay visible">
       <h5 id="overlay">Greetings, Summoner!</h5>
       <div class="overlay-small">
@@ -8,15 +8,21 @@
     </div>
   </div>
 
-  <h1>Memory Legends:<br>Bang Bang!</h1>
-  <h4>Select Rank:</h4>
+  <div class="flex flex-column border-1 h-6">
+    <div class="text-center border-1">
+      <h1 class="text-8xl">Memory Legends:<br>Bang Bang!</h1>
+    </div>
+    <div class="text-center border-1">
+      <h4 class="text-6xl">Select Rank:</h4>
+    </div>
+  </div>
 
-  <div (click)="onScreenClick()">
-    <div class="rank">
-      <div class="rank-option" *ngFor="let config of gameConfigs">
-        <a class="rank-button" routerLink="/game" [queryParams]="{ rows: config.rows, columns: config.columns }">
-          <span class='rank-border classic'>
-            <span class='rank-text classic'>
+  <div class="flex flex-column flex-1 border-3 h-6 w-full">
+    <div class="flex flex-row flex-1 flex-grow w-full" (click)="onScreenClick()">
+      <div  *ngFor="let config of gameConfigs" class="border-3 flex h-screen">
+        <a (click)="onScreenClick()" class="rank-button w-screen" routerLink="/game" [queryParams]="{ rows: config.rows, columns: config.columns }">
+          <span class='rank-border h-screen'>
+            <span class='rank-text' >
               {{ config.name }}
             </span>
           </span>
@@ -24,6 +30,46 @@
       </div>
     </div>
   </div>
+</div>
+ -->
 
+ <div (click)="onScreenClick()">
+  <div class="overlay visible">
+    <p id="overlay">Greetings, Summoner!</p>
+    <div class="overlay-small">
+      <p>(Click anywhere on the screen.)</p>
+    </div>
+  </div>
 </div>
 
+<div class=" body-home flex flex-row bg-no-repeat h-full w-full top-0 left-0 fixed align-middle text-center">
+
+  <div class="w-1/3 min-w-96 grow-0">
+    <div class="card-back w-full h-full overflow-auto">
+      <p class="text-5xl w-1/3 min-w-96 p-12 fixed">Leaderboard</p>
+      <img class="h-full w-full" src="../../assets/images/border.png">
+    </div>
+  </div>
+
+  <div class="w-2/3 flex flex-col h-full">
+    <div class="grow-0 flex-wrap pt-20">
+      <p class="text-9xl leading-none pb-16">Memory Legends:<br>Bang Bang!</p>
+    </div>
+    <div class="grow-0 h-20">
+      <h5 class="text-5xl text-gray-50 border-teal-950 drop-shadow-md">Select Rank:</h5>
+    </div>
+    <div class="grow h-14 -pt-24 pb-12 overflow-auto">
+      <div class="flex flex-col flex-1 w-full h-full px-24 space-y-4">
+        <div class="flex w-full h-full" (click)="onScreenClick()" *ngFor="let config of gameConfigs">
+            <a (click)="onScreenClick()" class="rank-button w-full h-full" routerLink="/game" [queryParams]="{ rows: config.rows, columns: config.columns }">
+              <span class='rank-border h-full p-2'>
+                <span class='rank-text text-4xl place-content-center' >
+                  {{ config.name }}
+                </span>
+              </span>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

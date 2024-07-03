@@ -19,11 +19,19 @@
 
     <!-- another container for the game information -->
     <div class="info-container">
-      <div class="info butn">
-        <div id="btn">
-          <a routerLink="/">Return to Main Menu</a>
+
+      <div class="rank">
+        <div class="rank-option">
+          <a class="rank-button" routerLink="/">
+            <span class='rank-border classic'>
+              <span class='rank-text classic'>
+                Return to Main Menu
+              </span>
+            </span>
+          </a>
         </div>
       </div>
+
       <div class="info">Flips:
         <span id="flips">0</span>
       </div>
@@ -33,7 +41,6 @@
     </div>
 
     <!-- Grid layout for the cards -->
-    <div class="card-container">
       <div *ngFor="let row of rowsArray(); let rowIndex = index" class="card-row">
         <div *ngFor="let col of columnsArray(); let colIndex = index" class="card-col">
           <div class="card">
@@ -47,7 +54,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
 
   </div>

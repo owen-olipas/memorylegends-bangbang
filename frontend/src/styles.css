@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Font import */
 @font-face {
   font-family: "Friz Quadrata";
@@ -9,32 +13,10 @@
        url("/assets/fonts/Friz-Quadrata.svg#Friz Quadrata") format("svg");
 }
 
-/* General HTML and Body styles */
-html {
+* {
   cursor: url('/assets/cursors/normal.cur'), auto;
   font-family: 'Friz Quadrata';
-  background-size: cover;
-  margin-bottom: 120px;
 }
-
-/* Body styles in general */
-.body-home {
-  background: linear-gradient(
-      rgba(3, 2, 1, 0.85),
-      rgba(3, 2, 0, 0.85)
-    ),
-    url('/assets/images/bg/bg.gif') no-repeat center fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Ensures it's behind other content */
-}
-
 
 /* Stylizing the body of the html */
 .body-game {
@@ -47,7 +29,7 @@ html {
   width: 100%;
   height: 100%;
   z-index: -1; /* Ensures it's behind other content */
-  animation: bg_slide 8s linear infinite 0s;
+  animation: bg_slide 20s linear infinite 0s;
   animation-timing-function: ease-in-out;
 }
 
@@ -76,8 +58,7 @@ body::-webkit-scrollbar {
 }
 
 /* Heading styles */
-h1, h4, h5 {
-  text-align: center;
+p {
   font-weight: bold;
   background-image: linear-gradient(
     to right,
@@ -94,4 +75,117 @@ h1, h4, h5 {
   -webkit-background-clip: text;
   -webkit-text-stroke-width: .1px;
   -webkit-text-stroke-color: #664e2a;
+}
+
+/* --------------------------- Button CONTAINER styles ---------------------- */
+
+.rank-button {
+  display: block;
+  border-radius: 2px;
+  border: solid 3px #795548;
+  background-color: #d8be52;
+  background: linear-gradient(to bottom,
+  #462523 0,
+  #cb9b51 22%,
+  #f6e27a 45%,
+  #f6f2c0 50%,
+  #f6e27a 55%,
+  #cb9b51 78%,
+  #462523 100%
+      );
+  border-top: 2px solid #d8be52;
+  border-bottom: 2px solid #1c140d;
+  cursor: url("/assets/cursors/alt.cur"), auto;
+}
+
+.rank-text {
+  display: table-cell;
+  padding: 9px 24px;
+  padding: 0.6rem 1.5rem;
+  text-shadow: 0 0 4px #000, 0 0 8px #000;
+  background: linear-gradient(to bottom,
+      #d8be52,
+      #a77d33 9%,
+      #5f3f1d 93%,
+      #1c140d
+      );
+  cursor: url("/assets/cursors/alt.cur"), auto;
+}
+
+.rank-border{
+  display: table;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  background-color: #d8be52;
+  background: linear-gradient(to bottom,
+  #462523 0,
+  #cb9b51 22%,
+  #f6e27a 45%,
+  #f6f2c0 50%,
+  #f6e27a 55%,
+  #cb9b51 78%,
+  #462523 100%
+      );
+  border-top: 2px solid #d8be52;
+  border-bottom: 2px solid #1c140d;
+  cursor: url("/assets/cursors/alt.cur"), auto;
+}
+
+.rank-border:hover .rank-text{
+  background: radial-gradient(circle,
+      #fed83b 22%,
+      #dba23e 83%,
+      #9d6224);
+}
+
+/* --------------------------- OVERLAY styles ---------------------- */
+
+/* General styles for the overlays */
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  text-align: center;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: background-color 500ms, font-size 500ms;
+}
+
+/* Styles for the texts */
+/* h5{
+  margin-top: 15%;
+} */
+
+/* Styles for the small texts */
+.overlay-small {
+  font-size: .2em;
+  /* margin-top: 14%; */
+  color: #cb9b51;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Animation for the overlay */
+.overlay.visible {
+  display: flex;
+  animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+  from {
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 0;
+  }
+  to {
+      background-color: rgba(0, 0, 0, .95);
+      font-size: 10em;
+  }
 }

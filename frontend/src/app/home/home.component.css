@@ -1,184 +1,18 @@
-/* --------------------------- HEADING styles ---------------------- */
-
-/* Style of the page title */
-h1 {
-  margin-top: 12  px;
-  font-size: 10em; /* Adjust size as needed */
-}
-
-h4 {
-  margin-top: -40px;
-  font-size: 3em; /* Adjust size as needed */
-}
-
-/* --------------------------- rank CONTAINER styles ---------------------- */
-
-/* Styles for the whole rank container */
-.rank {
-  margin-top: -80px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Add margin for each items in the container */
-.rank > div {
-  margin: 10px;
-  margin-top: 30px;
-}
-
-/* Styles for each of the items in the container */
-.rank-option {
-  width: 200px;
-  padding: 0 2px;
-  border-right: none;
-  border-left: none;
-  box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.35);
-  border-radius: 5px;
-  background-color: #d8be52;
-  background: linear-gradient(to bottom,
-  #462523 0,
-  #cb9b51 22%,
-  #f6e27a 45%,
-  #f6f2c0 50%,
-  #f6e27a 55%,
-  #cb9b51 78%,
-  #462523 100%
-      );
-  border-top: 2px solid #d8be52;
-  border-bottom: 2px solid #1c140d;
-}
-
-.rank-button {
-  display: block;
-  text-align: center;
-  border-radius: 2px;
-  border: solid 3px #795548;
-  background-color: #d8be52;
-  background: linear-gradient(to bottom,
-  #462523 0,
-  #cb9b51 22%,
-  #f6e27a 45%,
-  #f6f2c0 50%,
-  #f6e27a 55%,
-  #cb9b51 78%,
-  #462523 100%
-      );
-  border-top: 2px solid #d8be52;
-  border-bottom: 2px solid #1c140d;
-  cursor: url("../../assets/cursors/alt.cur"), auto;
-}
-
-.rank-text {
-  display: table-cell; width: 100%;
-  vertical-align: middle;
-  padding: 9px 24px;
-  padding: 0.6rem 1.5rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-shadow: 0 0 4px #000, 0 0 8px #000;
-  font-size: 20px;
-  font-size: 1.25rem;
-  letter-spacing: 2px;
-  background-color: #d8be52;
-  background: linear-gradient(to bottom,
-      #d8be52,
-      #a77d33 9%,
-      #5f3f1d 93%,
-      #1c140d
-      );
-  border-top: 2px solid #d8be52;
-  border-bottom: 2px solid #1c140d;
-}
-
-.rank-border{
-  display: table;
-  padding: 3px;
-  border-radius: 2px;
-  height: 35px;
-  width: 100%;
-  /* Font style */
-  text-transform: uppercase;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: 1px 1px #000;
-  font-size: 17px;
-  line-height: 1;
-  letter-spacing: 1px;
-  text-align: center;
-  background-color: #d8be52;
-  background: linear-gradient(to bottom,
-  #462523 0,
-  #cb9b51 22%,
-  #f6e27a 45%,
-  #f6f2c0 50%,
-  #f6e27a 55%,
-  #cb9b51 78%,
-  #462523 100%
-      );
-  border-top: 2px solid #d8be52;
-  border-bottom: 2px solid #1c140d;
-}
-
-.rank-border:hover .rank-text{
-  background: radial-gradient(circle,
-      #fed83b 22%,
-      #dba23e 83%,
-      #9d6224);
-}
-
-/* --------------------------- OVERLAY styles ---------------------- */
-
-/* General styles for the overlays */
-.overlay {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  display: none;
-  text-align: center;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: background-color 500ms, font-size 500ms;
-}
-
-/* Styles for the texts */
-h5{
-  margin-top: 15%;
-}
-
-/* Styles for the small texts */
-.overlay-small {
-  font-size: .2em;
-  margin-top: 14%;
-  color: #cb9b51;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Animation for the overlay */
-.overlay.visible {
-  display: flex;
-  animation: overlay-grow 500ms forwards;
-}
-
-@keyframes overlay-grow {
-  from {
-      background-color: rgba(0, 0, 0, 0);
-      font-size: 0;
+.body-home {
+  background: linear-gradient(
+      rgba(3, 2, 1, 0.75),
+      rgba(3, 2, 0, 0.75)
+    ),
+    url('/assets/images/bg/bg.gif') no-repeat center fixed;
+    background-size: cover;
   }
-  to {
-      background-color: rgba(0, 0, 0, .95);
-      font-size: 10em;
+
+  .card-back {
+    background-color: rgba(0, 0, 0, .7);
   }
-}
 
 /* ------------------ Make HTML responsive ------------------ */
-@media (max-width: 550px) {
+/* @media (max-width: 550px) {
   h1{
       font-size: 4em;
   }
@@ -197,4 +31,4 @@ h5{
   .overlay-small{
       margin-top: 30%;
   }
-}
+} */
