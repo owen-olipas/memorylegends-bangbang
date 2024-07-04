@@ -15,7 +15,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   private totalClicks: number = 0;
   private totalTime: number = 0;
   private timeCount: any;
-  private timerInterval: any;
+  private timecount: any;
   private cardToCheck: any = null;
   private matchedCards: any[] = [];
   private busy: boolean = false;
@@ -107,7 +107,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.shuffleCards();
       this.busy = false;
-      this.timeCount = this.startTime();
+      this.timecount = this.startTime();
     }, 500);
     // Hide cards, reset time and flip count when starting the game
     this.hideCards();
@@ -196,7 +196,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   victory(): void {
-    clearInterval(this.timeCount); // Stop the timer
+    clearInterval(this.timecount); // Stop the timer
     this.audioController.victory();
     document.getElementById('victory')?.classList.add('visible'); // Make the victory overlay visible
     // Add user's result
