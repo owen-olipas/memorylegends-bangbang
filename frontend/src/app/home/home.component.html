@@ -27,8 +27,8 @@
 
     <div class="grow h-14 -pt-24 pb-12 overflow-auto">
       <div class="flex flex-col flex-1 w-full h-full px-24 space-y-4">
-        <div class="flex w-full h-full" (click)="onScreenClick()" *ngFor="let config of gameConfigs">
-            <a (click)="onScreenClick()" class="rank-button w-full h-full" routerLink="/game" [queryParams]="{ rows: config.rows, columns: config.columns }">
+        <div class="flex w-full h-full" (click)="onScreenClick(); stopMusic()" *ngFor="let config of gameConfigs">
+            <a (click)="onScreenClick(); stopMusic();" class="rank-button w-full h-full" routerLink="/game" [queryParams]="{ rows: config.rows, columns: config.columns }">
               <span class='rank-border h-full p-2'>
                 <span class='rank-text text-4xl place-content-center' >
                   {{ config.name }}
@@ -38,6 +38,6 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>

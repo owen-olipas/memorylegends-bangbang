@@ -224,4 +224,9 @@ export class GameComponent implements OnInit, AfterViewInit {
   onScreenClick(): void {
     this.audioController.flip();
   }
+
+  stopMusic2(): void {
+    this.audioController.stopMusic2();
+    this.audioController.stopVictory();
+  }
 }

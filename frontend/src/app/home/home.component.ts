@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit {
     this.audioController.flip(); // Call flip() when screen is clicked
   }
 
+  stopMusic(): void {
+    this.audioController.stopMusic(); // Start background music
+  }
+
   navigateToGame(rows: number, columns: number): void {
     this.router.navigate(['/game'], { queryParams: { rows, columns } });
   }

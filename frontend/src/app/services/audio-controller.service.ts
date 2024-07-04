@@ -31,9 +31,19 @@ export class AudioControllerService {
     this.bgMusic2.play();
   }
 
+  stopMusic() {
+    this.bgMusic.pause();
+    this.bgMusic.currentTime = 0;
+  }
+
   stopMusic2() {
     this.bgMusic2.pause();
-    this.bgMusic.currentTime = 0;
+    this.bgMusic2.currentTime = 0;
+  }
+
+  stopVictory() {
+    this.victorySound.pause();
+    this.victorySound.currentTime = 0;
   }
   flip() {
       this.click.play();
