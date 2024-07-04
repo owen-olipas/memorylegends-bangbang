@@ -56,6 +56,7 @@ export class GameComponent implements OnInit {
       visible: false,
       matched: false
     })).slice(0, this.rows * this.columns);
+    console.log(this.cards);
 
     this.shuffleCards();
   }

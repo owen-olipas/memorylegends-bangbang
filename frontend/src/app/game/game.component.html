@@ -1,61 +1,67 @@
-<div class="body-game">
-
-  <h1>Memory Game</h1>
-
-  <!-- overlays before and after the game -->
-  <div class="overlay">
-    <h4>CLICK TO START</h4>
+<!-- overlays before and after the game -->
+<div class="overlay">
+  <p>CLICK TO START</p>
+</div>
+<div id="victory" class="overlay">
+  <p>VICTORY</p>
+  <div class="overlay-small">
+    <span id="p1"></span>
+    <span>Click to Restart</span>
   </div>
-  <div id="victory" class="overlay">
-    <h4>VICTORY</h4>
-    <div class="overlay-small">
-      <span id="p1"></span>
-      <span>Click to Restart</span>
-    </div>
-  </div>
+</div>
 
-  <!-- main container for the info and cards-->
-  <div class="container">
+<div class="body-game flex flex-row bg-no-repeat h-full w-full top-0 left-0 fixed align-middle text-center">
 
-    <!-- another container for the game information -->
-    <div class="info-container">
+  <div class="w-1/4 min-w-96 grow-0">
+    <div class="card-back w-full h-full overflow-auto">
+      <p class="text-5xl w-1/4 min-w-96 p-12 fixed">Leaderboard</p>
 
-      <div class="rank">
+      <div class="rank fixed">
         <div class="rank-option">
           <a class="rank-button" routerLink="/">
-            <span class='rank-border classic'>
-              <span class='rank-text classic'>
+            <span class='rank-border h-full p-1'>
+              <span class='rank-text'>
                 Return to Main Menu
               </span>
             </span>
           </a>
         </div>
       </div>
+      <!-- another container for the game information -->
+      <div class="info-container fixed text-4xl">
+        <div class="info">Flips:
+          <span id="flips">0</span>
+        </div>
+        <div class="info">Timer:
+          <span id="time">0</span>
+        </div>
+      </div>
 
-      <div class="info">Flips:
-        <span id="flips">0</span>
-      </div>
-      <div class="info">Timer:
-        <span id="time">0</span>
-      </div>
+      <img class="h-full w-full" src="../../assets/images/border.png">
     </div>
+  </div>
 
-    <!-- Grid layout for the cards -->
-      <div *ngFor="let row of rowsArray(); let rowIndex = index" class="card-row">
-        <div *ngFor="let col of columnsArray(); let colIndex = index" class="card-col">
-          <div class="card">
-            <div class="card-back card-face">
-              <img class="border" src="../../assets/images/border.png">
-              <img class="logo" src="../../assets/images/logo.png">
-            </div>
-            <div class="card-front card-face">
-              <img class="border" src="../../assets/images/border.png">
-              <img class="card-value" [src]="cards[rowIndex * columns + colIndex]">
-            </div>
+  <div class="w-3/4 h-full">
+    <div class="container h-full w-full grid gap-2 py-4 px-64">
+
+      <!-- Grid layout for the cards -->
+      <div *ngFor="let card of cards; let cardIndex = index">
+        <div class="card h-full drop-shadow-2xl">
+          <div class="card-back card-face">
+            <img class="border-card object-fill fixed w-full h-full" src="../../assets/images/border.png">
+            <img class="logo w-1/3 transition-transform transform scale-100 hover:scale-110" src="../../assets/images/logo.png">
+          </div>
+
+          <div class="card-front card-face">
+            <img class="border-card object-fill fixed w-full h-full" src="../../assets/images/border.png">
+            <img class="card-value object-cover object-top w-full" [src]="card.image">
           </div>
         </div>
-    </div>
+      </div>
 
+
+    </div>
   </div>
+
 
 </div>
