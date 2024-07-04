@@ -14,8 +14,9 @@ export class GameComponent implements OnInit, AfterViewInit {
   cardsValues: any[] = [];
   private totalClicks: number = 0;
   private totalTime: number = 0;
-  private timeCount: any;
-  private timecount: any;
+  private startTime: number = 0;
+  private elapsedTime: number = 0;
+  private timerInterval: any;
   private cardToCheck: any = null;
   private matchedCards: any[] = [];
   private busy: boolean = false;
@@ -75,6 +76,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     });
     console.log(overlays);
   }
+
   initializeCards(): void {
     const cardNames = [
       'alpha', 'alpha', 'alucard', 'alucard', 'bane', 'bane', 'claude', 'claude',
@@ -93,13 +95,12 @@ export class GameComponent implements OnInit, AfterViewInit {
       visible: false,
       matched: false
     })).slice(0, this.rows * this.columns);
-
   }
 
   startGame(): void {
     this.audioController.startMusic2();
     this.totalClicks = 0;
-    this.timeCount = this.totalTime; // Counter for the total time
+    this.startTime = Date.now();
     this.cardToCheck = null;
     this.matchedCards = [];
     this.busy = true;
@@ -107,12 +108,11 @@ export class GameComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.shuffleCards();
       this.busy = false;
-      this.timecount = this.startTime();
+      this.startTimer();
     }, 500);
     // Hide cards, reset time and flip count when starting the game
     this.hideCards();
-    this.timer.innerText = this.timeCount;
-    this.ticker.innerText = this.totalClicks;
+    this.updateTimerAndTicker();
   }
 
   shuffleCards(): void {
@@ -122,11 +122,20 @@ export class GameComponent implements OnInit, AfterViewInit {
     }
   }
 
-  startTime() {
-    return setInterval(() => {
-        this.timeCount++; // Increment total time
-        this.timer.innerText = this.timeCount; // Update time on the html
-    }, 1000); // Calls the function every 1000 ms
+  startTimer(): void {
+    this.timerInterval = setInterval(() => {
+      this.elapsedTime = Date.now() - this.startTime;
+      this.updateTimerAndTicker();
+    }, 100); // Update every 100 milliseconds for more precise timing
+  }
+
+  updateTimerAndTicker(): void {
+    if (this.timer) {
+      this.timer.innerText = (this.elapsedTime / 1000).toFixed(3); // Display time in seconds with milliseconds
+    }
+    if (this.ticker) {
+      this.ticker.innerText = this.totalClicks.toString();
+    }
   }
 
   canFlipCard(card: any): boolean {
@@ -140,7 +149,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     if (this.canFlipCard(card)) {
       this.audioController.flip();
       this.totalClicks++; // Increment flips counter
-      this.ticker.innerText = this.totalClicks; //Updating the flips on the html
+      this.ticker.innerText = this.totalClicks.toString(); //Updating the flips on the html
       card.classList.add('visible'); // Make the front of the card visible
 
       if (this.cardToCheck) {
@@ -151,9 +160,9 @@ export class GameComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getCardType(card: any): void {
+  getCardType(card: any): string {
     return card.getElementsByClassName('card-value')[0].src;
-}
+  }
 
   checkForCardMatch(card: any): void {
     console.log("card1", this.getCardType(card));
@@ -196,22 +205,22 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   victory(): void {
-    clearInterval(this.timecount); // Stop the timer
+    clearInterval(this.timerInterval); // Stop the timer
     this.audioController.victory();
     document.getElementById('victory')?.classList.add('visible'); // Make the victory overlay visible
     // Add user's result
     const p1Element = document.getElementById('p1');
     if (p1Element) {
-        p1Element.innerHTML = 'Congratulations! You did it in '+ this.totalClicks+ ' flips'  + ' and ' + this.timeCount + ' seconds.';
+        p1Element.innerHTML = `Congratulations! You did it in ${this.totalClicks} flips and ${(this.elapsedTime / 1000).toFixed(3)} seconds.`;
     }
   }
 
-  hideCards() {
+  hideCards(): void {
     this.cards.forEach(card => {
-        card.classList.remove('visible');
-        card.classList.remove('matched');
+      card.classList.remove('visible');
+      card.classList.remove('matched');
     });
-}
+  }
 
   rowsArray(): number[] {
     return Array(this.rows).fill(0);

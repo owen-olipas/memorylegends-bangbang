@@ -17,10 +17,10 @@
       <p class="text-5xl w-1/4 min-w-96 p-12 fixed">Leaderboard</p>
 
       <div class="rank fixed">
-        <div class="rank-option">
-          <a class="rank-button" routerLink="/">
+        <div (click)="onScreenClick(); stopMusic2();" class="rank-option">
+          <a (click)="onScreenClick(); stopMusic2();"class="rank-button" routerLink="/">
             <span class='rank-border h-full p-1'>
-              <span class='rank-text' (click)="onScreenClick(); stopMusic2();">
+              <span class='rank-text'>
                 Return to Main Menu
               </span>
             </span>
