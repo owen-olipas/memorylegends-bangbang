@@ -91,6 +91,7 @@ class MemoryGame {
 
     // A function use when flipping the cards
     flipCard(card) {
+      console.log(card + ' was clicked');
         if(this.canFlipCard(card)) { // If the card can be flipped
             this.audioController.flip(); // Play this audio
             this.totalClicks++; // Increment flips counter
@@ -172,6 +173,7 @@ function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay')); // Make an array for the overlay collection
     let cards = Array.from(document.getElementsByClassName('card')); // Make an array for the card collection
     let game = new MemoryGame(0, cards);
+    console.log("cards: ", cards);
 
     // Add an action in which the overlay will be removed when the user click anywhere on the page
     overlays.forEach(overlay => {

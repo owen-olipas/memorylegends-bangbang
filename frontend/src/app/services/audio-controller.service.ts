@@ -5,12 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class AudioControllerService {
   private bgMusic: HTMLAudioElement;
+  private bgMusic2: HTMLAudioElement;
   private click: HTMLAudioElement;
   private matchSound: HTMLAudioElement;
   private victorySound: HTMLAudioElement;
 
   constructor() {
     this.bgMusic = new Audio('../../assets/audio/mlbb-bg_index.mp3');
+    this.bgMusic2 = new Audio('../../assets/audio/mlbb-bg1.mp3');
     this.click = new Audio('../../assets/audio/click.mp3');
     this.matchSound = new Audio('../../assets/audio/match.mp3');
     this.victorySound = new Audio('../../assets/audio/victory.mp3');
@@ -25,8 +27,12 @@ export class AudioControllerService {
     this.bgMusic.play();
   }
 
-  stopMusic() {
-    this.bgMusic.pause();
+  startMusic2() {
+    this.bgMusic2.play();
+  }
+
+  stopMusic2() {
+    this.bgMusic2.pause();
     this.bgMusic.currentTime = 0;
   }
   flip() {
@@ -36,7 +42,7 @@ export class AudioControllerService {
       this.matchSound.play();
   }
   victory() {
-      this.stopMusic();
+      this.stopMusic2();
       this.victorySound.play();
   }
 }

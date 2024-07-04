@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AudioControllerService } from '../services/audio-controller.service';
 
@@ -7,10 +7,11 @@ import { AudioControllerService } from '../services/audio-controller.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, AfterViewInit {
   rows: number = 2;
   columns: number = 2;
   cards: any[] = [];
+  cardsValues: any[] = [];
   private totalClicks: number = 0;
   private totalTime: number = 0;
   private timerInterval: any;
@@ -38,6 +39,37 @@ export class GameComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.setCardListeners();
+    this.setOverlayListeners();
+  }
+
+  setCardListeners(): void {
+    const container = this.el.nativeElement.querySelector('.container');
+    if (container) {
+      const cards = container.getElementsByClassName('card');
+      this.cards = Array.from(cards);
+      console.log("cards: ", this.cards);
+
+      // When a card has been clicked
+      this.cards.forEach(card => {
+        card.addEventListener('click', () => {
+          this.flipCard(card); // call this function
+        });
+      });
+    }
+  }
+
+  setOverlayListeners(): void {
+    const overlays = Array.from(document.getElementsByClassName('overlay'));
+    overlays.forEach(overlay => {
+      overlay.addEventListener('click', () => {
+        overlay.classList.remove('visible');
+        this.startGame(); // Call Angular's startGame method
+      });
+    });
+    console.log(overlays);
+  }
   initializeCards(): void {
     const cardNames = [
       'alpha', 'alpha', 'alucard', 'alucard', 'bane', 'bane', 'claude', 'claude',
@@ -50,26 +82,24 @@ export class GameComponent implements OnInit {
       'sun', 'sun', 'tigreal', 'tigreal', 'xborg', 'xborg', 'zhask', 'zhask'
     ];
 
-    this.cards = cardNames.map(card => ({
+    this.cardsValues = cardNames.map(card => ({
       name: card,
       image: `../../assets/images/${card}.png`,
       visible: false,
       matched: false
     })).slice(0, this.rows * this.columns);
-    console.log(this.cards);
 
-    this.shuffleCards();
   }
 
   shuffleCards(): void {
-    for (let i = this.cards.length - 1; i > 0; i--) {
+    for (let i = this.cardsValues.length - 1; i > 0; i--) {
       const randIndex = Math.floor(Math.random() * (i + 1));
-      [this.cards[i], this.cards[randIndex]] = [this.cards[randIndex], this.cards[i]];
+      [this.cardsValues[i], this.cardsValues[randIndex]] = [this.cardsValues[randIndex], this.cardsValues[i]];
     }
   }
 
   startGame(): void {
-    this.audioController.startMusic();
+    this.audioController.startMusic2();
     this.totalClicks = 0;
     this.totalTime = 0;
     this.cardToCheck = null;
@@ -94,10 +124,15 @@ export class GameComponent implements OnInit {
   }
 
   flipCard(card: any): void {
+    console.log(card + ' was clicked');
+    console.log(this.canFlipCard(card));
+
     if (this.canFlipCard(card)) {
       this.audioController.flip();
       card.visible = true;
       this.totalClicks++;
+      // this.ticker.innerText = this.totalClicks; //Updating the flips on the html
+      card.classList.add('visible'); // Make the front of the card visible
 
       if (this.cardToCheck) {
         this.checkForCardMatch(card);
