@@ -265,7 +265,28 @@ export class GameComponent implements OnInit, AfterViewInit {
     return this.isPaused;
   }
 
-  pausedGame(): void {
-  // pause the game logic
+  togglePause(): void {
+    this.isPaused = !this.isPaused;
+
+    if (this.isPaused) {
+      this.pauseGame();
+    } else {
+      this.resumeGame();
+    }
+  }
+
+  pauseGame(): void {
+    document.getElementById('paused')?.classList.add('visible'); // Make the pause overlay visible
+    clearInterval(this.timerInterval); // Pause the timer
+    this.audioController.stopMusic2(); // Pause the music or any other ongoing actions
+  }
+
+  resumeGame(): void {
+    document.getElementById('paused')?.classList.remove('visible'); // Make the pause overlay visible
+    this.startTime = Date.now() - this.elapsedTime; // Adjust start time to account for elapsed time
+    this.startTimer(); // Resume the timer
+    if (this.isMusicPlaying) {
+      this.audioController.startMusic2(); // Resume music if it was playing
+    }
   }
 }

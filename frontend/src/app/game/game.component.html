@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div id="paused" class="overlay-pause paused fixed z-[50] w-3/4 right-0 h-full">
+<div id="paused" class="overlay-pause fixed z-[50] w-3/4 right-0 h-full">
   <div class="flex flex-row w-full h-full">
     <div class="bg-paused w-full overflow-auto text-center place-content-center">
       <p class="absolute w-full h-full place-content-center text-9xl top-0 right-0 drop-shadow-2xl shadow-black">Game Paused</p>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="grow">
-        <a (click)="pausedGame()"class="rank-button">
+        <a (click)="togglePause()"class="rank-button">
           <span class='rank-border h-full p-1'>
             <span class='rank-text'>
               <i [class]="getIsPaused() ? 'pi pi-play' : 'pi pi-pause'" id="icon"></i>

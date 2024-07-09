@@ -139,13 +139,8 @@ p {
   align-items: center;
 }
 
-.overlay-pause {
-  display: none;
-  transition: background-color 500ms, font-size 500ms;
-}
-
 /* Animation for the overlay */
-.overlay.visible, .overlay-pause.visible {
+.overlay.visible {
   display: flex;
   animation: overlay-grow 500ms forwards;
 }

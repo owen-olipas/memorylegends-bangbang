@@ -124,3 +124,26 @@
   position: relative;
 } */
 
+/* ------------------ Overlay ------------------ */
+
+.overlay-pause {
+  display: none;
+  transition: background-color 500ms, font-size 500ms;
+}
+
+/* Animation for the overlay */
+.overlay-pause.visible {
+  display: flex;
+  animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+  from {
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 0;
+  }
+  to {
+      background-color: rgba(0, 0, 0, 0.7);
+      font-size: 10em;
+  }
+}
