@@ -33,12 +33,22 @@ export class AudioControllerService {
 
   stopMusic() {
     this.bgMusic.pause();
-    this.bgMusic.currentTime = 0;
   }
 
   stopMusic2() {
     this.bgMusic2.pause();
-    this.bgMusic2.currentTime = 0;
+  }
+
+  getMusic2() {
+    return this.bgMusic2;
+  }
+
+  getMusic() {
+    return this.bgMusic;
+  }
+
+  resetMusic(music: HTMLAudioElement): void {
+    music.currentTime = 0;
   }
 
   stopVictory() {

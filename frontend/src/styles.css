@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "primeicons/primeicons.css";
 
 /* Font import */
 @font-face {
@@ -105,6 +106,10 @@ p {
       #9d6224);
 }
 
+#icon{
+  cursor: url("/assets/cursors/alt.cur"), auto;
+}
+
 /* --------------------------- OVERLAY styles ---------------------- */
 
 /* General styles for the overlays */
@@ -134,8 +139,13 @@ p {
   align-items: center;
 }
 
+.overlay-pause {
+  display: none;
+  transition: background-color 500ms, font-size 500ms;
+}
+
 /* Animation for the overlay */
-.overlay.visible {
+.overlay.visible, .overlay-pause.visible {
   display: flex;
   animation: overlay-grow 500ms forwards;
 }
@@ -146,7 +156,7 @@ p {
       font-size: 0;
   }
   to {
-      background-color: rgba(0, 0, 0, .95);
+      background-color: rgba(0, 0, 0, 0.9);
       font-size: 10em;
   }
 }

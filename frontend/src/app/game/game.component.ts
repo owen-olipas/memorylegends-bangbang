@@ -13,7 +13,6 @@ export class GameComponent implements OnInit, AfterViewInit {
   cards: any[] = [];
   cardsValues: any[] = [];
   private totalClicks: number = 0;
-  private totalTime: number = 0;
   private startTime: number = 0;
   private elapsedTime: number = 0;
   private timerInterval: any;
@@ -22,6 +21,8 @@ export class GameComponent implements OnInit, AfterViewInit {
   private busy: boolean = false;
   private timer: any;
   private ticker: any;
+  private isMusicPlaying: boolean = true;
+  private isPaused: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -222,6 +223,21 @@ export class GameComponent implements OnInit, AfterViewInit {
     });
   }
 
+  toggleMusic(): void {
+    this.isMusicPlaying = !this.isMusicPlaying;
+    console.log(this.isMusicPlaying);
+    if (this.isMusicPlaying) {
+      this.audioController.startMusic2(); // Start the music
+    } else {
+      this.audioController.stopMusic2(); // Stop the music
+    }
+  }
+
+  onToggleMusic(): void {
+    this.onScreenClick();
+    this.toggleMusic(); // Toggle music on screen click
+  }
+
   rowsArray(): number[] {
     return Array(this.rows).fill(0);
   }
@@ -236,6 +252,20 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   stopMusic2(): void {
     this.audioController.stopMusic2();
+    this.audioController.resetMusic(this.audioController.getMusic2());
     this.audioController.stopVictory();
+  }
+
+
+  getIsMusicPlaying(): boolean {
+    return this.isMusicPlaying;
+  }
+
+  getIsPaused(): boolean {
+    return this.isPaused;
+  }
+
+  pausedGame(): void {
+  // pause the game logic
   }
 }

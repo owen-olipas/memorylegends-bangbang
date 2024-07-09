@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
 
   stopMusic(): void {
     this.audioController.stopMusic(); // Start background music
+    this.audioController.resetMusic(this.audioController.getMusic());
   }
 
   navigateToGame(rows: number, columns: number): void {
